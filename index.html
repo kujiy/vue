@@ -7,29 +7,10 @@
 				<h1>{{ message }} </h1>
                                 {{ message }}
                                 <input type="text" v-model="message"></input>
-                              <pre>
-                                {{ $data  }}
-                              </pre>
 <!--
                           <form action="dontgo.html" v-on:@submit.prevent="handleit">
                           <form action="dontgo.html" @submit.prevent="handleit">
 -->                            
-                             <counter>     </counter>
-                             <counter>     </counter>
-                             <counter>     </counter>
-<hr> 
-<hr> 
-                             <my-counter subject="likes">     </my-counter>
-                             <my-counter subject="dislikes">     </my-counter>
-<hr> 
-                             <inside_counter subject="likes">     </inside_counter>
-                             <inside_counter subject="dislikes">     </inside_counter>
-<hr> 
-<hr> 
-<hr> 
-<hr> 
-<hr> 
-<hr> 
 <!--
                           </form>
 
@@ -44,6 +25,29 @@
                             </form>
 -->
 
+                             <counter>     </counter>
+                             <counter>     </counter>
+<hr> 
+<hr> 
+                             <my-counter subject="likes">     </my-counter>
+                             <my-counter subject="dislikes">     </my-counter>
+<hr> 
+                             <inside_counter subject="likes">     </inside_counter>
+                             <inside_counter subject="dislikes">     </inside_counter>
+<hr> 
+<hr> 
+ <h1> 
+       skill: {{ points <= 100 ? 'beginner' : 'intermediate' }} 
+</h1>
+computed<br>
+
+ <h1> skill: {{ skill }} </h1>
+<input type="text" v-model="points"></input>
+
+<hr> 
+<hr> 
+<hr> 
+<hr> 
 
 			</div>
         
@@ -51,6 +55,9 @@
 <hr> 
 <hr> 
 <hr> 
+                              <pre>
+                                {{ $data  }}
+                              </pre>
 
        <div id="counter-template">
           <div>
@@ -82,7 +89,8 @@
      el: '#app',
      data: {
             message: "heeelo",
-            count: 0
+            count: 0,
+            points: 200
      },
      methods: {
                   doSomething: function () {
@@ -97,6 +105,15 @@
                           return { count: 0,      who: "inside_counter"};
               }
           }
+     },
+
+     computed: {
+         skill: function() {
+                if (this.points <= 100) {
+                    return 'Beginner';
+                }
+                return "Advanced";
+         }
      }
    })
 </script>
