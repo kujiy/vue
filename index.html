@@ -1,0 +1,110 @@
+<html>
+		<head>
+			<title>Vue Post Reader</title>
+		</head>
+		<body>
+			<div id="app">
+				<h1>{{ message }} </h1>
+                                {{ message }}
+                                <input type="text" v-model="message"></input>
+                              <pre>
+                                {{ $data  }}
+                              </pre>
+<!--
+                          <form action="dontgo.html" v-on:@submit.prevent="handleit">
+                          <form action="dontgo.html" @submit.prevent="handleit">
+-->                            
+                             <counter>     </counter>
+                             <counter>     </counter>
+                             <counter>     </counter>
+<hr> 
+<hr> 
+                             <my-counter subject="likes">     </my-counter>
+                             <my-counter subject="dislikes">     </my-counter>
+<hr> 
+                             <inside_counter subject="likes">     </inside_counter>
+                             <inside_counter subject="dislikes">     </inside_counter>
+<hr> 
+<hr> 
+<hr> 
+<hr> 
+<hr> 
+<hr> 
+<!--
+                          </form>
+
+-->                            
+<!--                            <form>
+                             <span class="error" v-show="!message" >Put in your message! </span>
+    <br>
+                             <textarea v-model="message"></textarea>
+                             <button type="submit" v-show="message">     
+                                    submit
+                             </button>
+                            </form>
+-->
+
+
+			</div>
+        
+
+<hr> 
+<hr> 
+<hr> 
+
+       <div id="counter-template">
+          <div>
+             Here is in template by {{ who }}<br>
+             <button @click="count += 1" >{{ subject }} : increment = {{ count }}</button> <br>
+             
+          </div>
+       </div>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+
+<script>
+   Vue.component("my-counter", {
+          template: '#counter-template',
+          props: ['subject'],
+          data: function () {
+                      return { count: 0 , who: "my-counter Vue.component" };
+                }
+  });
+
+   Vue.component("counter", {
+          template: '#counter-template',
+          //template: '<h1>counter-template</h1>'
+          data: function () {
+                      return { count: 0 };
+                }
+  });
+
+   new Vue({
+     el: '#app',
+     data: {
+            message: "heeelo",
+            count: 0
+     },
+     methods: {
+                  doSomething: function () {
+                         this.count += 1;
+                    }
+               },
+     components: {
+          inside_counter: {
+              template: '#counter-template',
+              props: ['subject'],
+              data: function () {
+                          return { count: 0,      who: "inside_counter"};
+              }
+          }
+     }
+   })
+</script>
+
+<style>
+.error { color:red;}
+
+</style>
+		</body>
+	</html>
+
